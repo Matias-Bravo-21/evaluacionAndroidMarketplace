@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6F8"
+    tools:context=".Home">
+
+    <!-- Barra superior -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="#0D47A1">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_home"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#0D47A1"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="Inicio"
+            app:titleTextColor="@android:color/white"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_search_fixed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:background="@android:color/white">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_view_productos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:queryHint="Buscar productos o categorías..."
+                app:iconifiedByDefault="false"
+                app:searchIcon="@drawable/ic_search"
+                app:closeIcon="@drawable/ic_close"
+                android:paddingVertical="4dp"
+                android:background="@android:color/white"
+                android:theme="@style/ThemeOverlay.AppCompat.Light" />
+        </androidx.cardview.widget.CardView>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Lista de productos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_productos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:layout_marginBottom="88dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/activity_item_producto" />
+
+    <!-- Barra inferior -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#FFFFFF"
+        app:itemIconTint="@color/selected_nav_icon"
+        app:itemTextColor="@color/select_nav_text"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:elevation="8dp" />
+
+    <!-- Botón flotante -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_publicar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:contentDescription="Publicar producto"
+        app:backgroundTint="#2196F3"
+        app:elevation="12dp"
+        app:layout_anchor="@+id/bottom_navigation_view"
+        app:layout_anchorGravity="top|center"
+        app:srcCompat="@drawable/ic_add"
+        app:tint="@android:color/white" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

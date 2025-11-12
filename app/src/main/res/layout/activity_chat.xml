@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F5F7"
+    tools:context=".ChatActivity">
+
+    <!-- 1. Cabecera -->
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:background="#1E3A5F"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Volver"
+            app:tint="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_profile_placeholder"
+            android:background="@drawable/rounded_chat_header_bg"
+            android:padding="4dp"
+            android:contentDescription="Foto del contacto"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvContactName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Contacto"/>
+
+            <TextView
+                android:id="@+id/tvContactStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#E5E7EB"
+                android:textSize="12sp"
+                tools:text="Activo ahora"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 2. Área de entrada -->
+    <LinearLayout
+        android:id="@+id/layout_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/editTextMensaje"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Escribe un mensaje..."
+            android:maxLines="4"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:imeOptions="actionDone"
+            android:inputType="textCapSentences|textMultiLine"
+            android:textColor="#111827"
+            android:textColorHint="#9CA3AF"/>
+
+        <ImageButton
+            android:id="@+id/btnAttachImage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Adjuntar imagen"
+            android:backgroundTint="#E0E7FF"
+            android:background="@drawable/send_button_bg_secondary"
+            android:src="@drawable/ic_gallery"
+            app:tint="#2563EB"
+            android:scaleType="fitCenter"
+            android:padding="12dp"/>
+
+        <ImageButton
+            android:id="@+id/btnEnviar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Enviar mensaje"
+            android:background="@drawable/send_button_bg"
+            android:backgroundTint="#2563EB"
+            android:src="@drawable/ic_send"
+            app:tint="#FFFFFF"
+            android:scaleType="fitCenter"
+            android:padding="12dp"/>
+    </LinearLayout>
+
+    <!-- 3. RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewChat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#F2F5F7"
+        android:paddingTop="8dp"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/layout_header"
+        app:layout_constraintBottom_toTopOf="@id/layout_input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_mensaje"
+        tools:itemCount="20"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

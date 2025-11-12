@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F5F7"
+    tools:context=".Detalle_Producto">
+
+    <!-- AppBar con Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1E3A5F"
+        android:elevation="4dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_detalle"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#1E3A5F"
+            app:title="Detalles del producto"
+            app:titleTextColor="#FFFFFF"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Contenido del detalle -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="80dp">
+
+            <!-- Imagen principal -->
+            <ImageView
+                android:id="@+id/iv_detalle_imagen"
+                android:layout_width="0dp"
+                android:layout_height="280dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/moto"
+                android:contentDescription="Imagen del producto"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Tarjeta de información -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginTop="-36dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_detalle_imagen">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <!-- Título -->
+                    <TextView
+                        android:id="@+id/tv_detalle_titulo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Moto deportiva en excelente estado"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#1E3A5F"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <!-- Precio -->
+                    <TextView
+                        android:id="@+id/tv_detalle_precio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="$ 1.290.000 CLP"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="#2563EB"
+                        app:layout_constraintTop_toBottomOf="@id/tv_detalle_titulo"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <!-- Separador -->
+                    <View
+                        android:id="@+id/divider"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:background="#E5E7EB"
+                        app:layout_constraintTop_toBottomOf="@id/tv_detalle_precio"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <!-- Vendedor -->
+                    <TextView
+                        android:id="@+id/tv_etiqueta_vendedor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Publicado por:"
+                        android:textStyle="bold"
+                        android:textColor="#1E3A5F"
+                        app:layout_constraintTop_toBottomOf="@id/divider"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_detalle_vendedor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Matías López"
+                        android:textColor="#2563EB"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tv_etiqueta_vendedor"
+                        app:layout_constraintStart_toEndOf="@id/tv_etiqueta_vendedor"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <!-- Descripción -->
+                    <TextView
+                        android:id="@+id/tv_etiqueta_descripcion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Descripción del producto:"
+                        android:textStyle="bold"
+                        android:textColor="#1E3A5F"
+                        app:layout_constraintTop_toBottomOf="@id/tv_detalle_vendedor"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_detalle_descripcion"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Moto en excelente estado, poco uso, mantenimiento al día. Ideal para ciudad o carretera."
+                        android:textColor="#374151"
+                        android:textSize="15sp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_etiqueta_descripcion"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Botón flotante -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_contactar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="16dp"
+        android:text="Contactar al vendedor"
+        android:textColor="#FFFFFF"
+        app:icon="@drawable/ic_send"
+        app:backgroundTint="#2563EB"
+        app:cornerRadius="12dp" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
