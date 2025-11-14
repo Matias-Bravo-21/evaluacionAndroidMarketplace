@@ -5,49 +5,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F5F7"
+    android:background="@color/white"
     tools:context=".AnunciosActivity">
-
-    <!-- 1. AppBar con Toolbar -->
+    <!-- 1. AppBar con Contenedor de Barra (RelativeLayout) -->
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#1E3A5F"
-        android:elevation="4dp">
-
-        <androidx.appcompat.widget.Toolbar
+        android:layout_height="wrap_content">
+        <!-- Usamos un RelativeLayout para controlar la posición del botón y título -->
+        <RelativeLayout
             android:id="@+id/toolbar_anuncios"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#1E3A5F"
-            app:title="Gestion de Anuncios MatiasMarketplace"
-            app:titleTextColor="#FFFFFF"
-            app:navigationIcon="@drawable/ic_arrow_back"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+            android:background="?attr/colorPrimary">
+            <!-- Botón de Retroceso (TU COMPONENTE) -->
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Volver"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/white"
+                android:scaleType="centerInside"/>
+            <!-- Título Centrado (Simulación de Título de Toolbar) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Mis Anuncios"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
-
-    <!-- 2. RecyclerView principal -->
+    <!-- 2. Contenido Principal: RecyclerView de Productos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_mis_productos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:paddingBottom="64dp"
+        android:paddingBottom="56dp"
         android:clipToPadding="false"
-        android:background="#F2F5F7"
-        tools:listitem="@layout/activity_item_producto" />
-
-    <!-- 3. Barra de navegación inferior -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#FFFFFF"
-        app:itemIconTint="@color/selected_nav_icon"
-        app:itemTextColor="@color/select_nav_text"
-        app:itemRippleColor="#E0E7FF"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"
-        app:itemActiveIndicatorStyle="@style/ActiveIndicatorStyle" />
+        tools:listitem="@layout/activity_item_producto"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
